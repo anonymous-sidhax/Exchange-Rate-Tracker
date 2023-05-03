@@ -1,11 +1,7 @@
 import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
-import axios from 'axios'
 import cheerio from 'cheerio'
 
 const fetch = require('node-fetch');
-
-import {useEffect, useState} from 'react';
 
 export default function Home(props) 
 {
@@ -19,8 +15,6 @@ export default function Home(props)
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        {/* <div>Remitly Rate: {getReddit}</div> */}
-        {/* <div>Remitly Rate: {JSON.stringify(b.props)}</div> */}
         <div>Remitly Rate: {props.titleList}</div>
         <div>Last scraped: {props.lastScraped}</div>
 
@@ -53,36 +47,8 @@ export async function getStaticProps ()
   console.log(titleList);
   const lastScraped = new Date().toISOString()
 
-  console.log(lastScraped);
-	//return titleList;
+  // console.log(lastScraped);
   return {
     props: {titleList, lastScraped}
   } 
 };
-
-
-// export async function remitly () 
-// {
-//   const AXIOS_OPTIONS = {
-//     headers: {
-//       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-//     }
-//   };
-
-//   axios.get('https://httpbin.org/headers', config) 
-// 	.then(({ data }) => { 
-// 		console.log(data) 
-// 	});
-// }
-
-//   //let data = await axios.get('https://www.remitly.com/us/en/india/pricing', AXIOS_OPTIONS);
-//   let data = await axios.get('https://www.npmjs.com/package/cors', AXIOS_OPTIONS);
-//   let $ = load(data);
-//   //let remitly_rate = $('/html/body/div[2]/div/div/div[2]/div[2]/h2[3]')
-//   let remitly_rate = $('/html/body/div[1]/div/div[2]/main/div/div[1]/h2');
-//   const lastScraped = new Date().toISOString()
-
-//   return {
-//     props: {remitly_rate, lastScraped}
-//   }
-// }
