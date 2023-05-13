@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import cheerio from 'cheerio'
+import React,{useEffect,useState} from 'react'
+import Remitly from '@/components/remitly';
 
 const fetch = require('node-fetch');
 
 export default function Home(props) 
 {
-
   return (
     <>
       <Head>
@@ -14,10 +15,7 @@ export default function Home(props)
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-        <div>Remitly Rate: {props.titleList}</div>
-        <div>Last scraped: {props.lastScraped}</div>
-
+      <Remitly props={props}/>
     </>
   )
 }
@@ -44,11 +42,10 @@ export async function getStaticProps ()
     titleList.push(titleText);
   });
 
-  console.log(titleList);
   const lastScraped = new Date().toISOString()
 
-  // console.log(lastScraped);
   return {
-    props: {titleList, lastScraped}
+    props: {titleList, lastScraped},
+    revalidate: 10,
   } 
 };
