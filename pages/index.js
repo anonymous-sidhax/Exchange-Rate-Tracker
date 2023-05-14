@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import React,{useEffect,useState} from 'react'
 import Remitly from '@/src/components/remitly';
 import remitlyScrape from '@/src/features/remitly';
 
