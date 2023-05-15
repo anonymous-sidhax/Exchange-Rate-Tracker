@@ -23,7 +23,7 @@ const remitlyScrape = async function remitly()
   });
 
   const lastScraped = new Date().toISOString()
-
+//   console.log(titleList)
   return {
       titleList, lastScraped
     }
