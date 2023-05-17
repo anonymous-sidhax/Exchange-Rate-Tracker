@@ -1,15 +1,11 @@
 import cheerio from 'cheerio'
+import Scrape from './scrape';
+
+const remitlyUrl = 'https://www.remitly.com/us/en/india/pricing'
 
 const remitlyScrape = async function remitly()
 {
-  const response = await fetch('https://www.remitly.com/us/en/india/pricing', {
-    cache: 'no-cache',
-    mode: 'no-cors',
-    headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-    }});
-
+  const response = await Scrape(remitlyUrl)
   const body = await response.text();
 
   const $ = cheerio.load(body);
